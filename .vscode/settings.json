@@ -1,0 +1,7 @@
+{
+    "luau-lsp.platform.type": "standard",
+    "[luau]": {
+        "editor.defaultFormatter": "JohnnyMorganz.stylua"
+    },
+    "editor.formatOnSave": true
+}
