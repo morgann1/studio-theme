@@ -52,6 +52,11 @@ local function getThemeColors(theme: Theme): ({ [string]: { number } }, { string
 		local color: string? = nil
 
 		for _, vscodeColor in vscodeColors do
+			if string.sub(vscodeColor, 1, 1) == "#" then
+				color = vscodeColor
+				break
+			end
+
 			if theme.colors then
 				color = theme.colors[vscodeColor]
 			end
