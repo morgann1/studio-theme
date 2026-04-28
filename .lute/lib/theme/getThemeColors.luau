@@ -18,6 +18,20 @@ export type Theme = {
 	semanticTokenColors: { [string]: SemanticEntry }?,
 }
 
+local function lookupScope(scopeColors: { [string]: string }, scope: string): string?
+	if scopeColors[scope] then
+		return scopeColors[scope]
+	end
+	local parts = string.split(scope, ".")
+	for i = #parts - 1, 1, -1 do
+		local candidate = table.concat(parts, ".", 1, i)
+		if scopeColors[candidate] then
+			return scopeColors[candidate]
+		end
+	end
+	return nil
+end
+
 local function getThemeColors(theme: Theme): ({ [string]: { number } }, { string })
 	local colors: { [string]: { number } } = {}
 	local missing: { string } = {}
@@ -37,11 +51,11 @@ local function getThemeColors(theme: Theme): ({ [string]: { number } }, { string
 			end
 
 			if not color then
-				color = scopeColors[vscodeColor]
+				color = lookupScope(scopeColors, vscodeColor)
 			end
 
 			if not color then
-				color = semanticColors[vscodeColor]
+				color = lookupScope(semanticColors, vscodeColor)
 			end
 
 			if not color then
