@@ -29,7 +29,13 @@ local SCOPE_TO_SEMANTIC: { [string]: string } = {
 	["keyword.operator"] = "operator",
 }
 
-type SemanticEntry = string | { foreground: string?, fontStyle: string?, bold: boolean?, italic: boolean?, underline: boolean? }
+type SemanticEntry = string | {
+	foreground: string?,
+	fontStyle: string?,
+	bold: boolean?,
+	italic: boolean?,
+	underline: boolean?,
+}
 
 type Theme = { semanticTokenColors: { [string]: SemanticEntry } }
 

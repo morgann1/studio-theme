@@ -10,7 +10,13 @@ type TokenColor = {
 	settings: { foreground: string? },
 }
 
-type SemanticEntry = string | { foreground: string?, fontStyle: string?, bold: boolean?, italic: boolean?, underline: boolean? }
+type SemanticEntry = string | {
+	foreground: string?,
+	fontStyle: string?,
+	bold: boolean?,
+	italic: boolean?,
+	underline: boolean?,
+}
 
 export type Theme = {
 	colors: { [string]: string }?,
